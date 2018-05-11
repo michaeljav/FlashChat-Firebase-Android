@@ -102,8 +102,11 @@ public class ChatListAdapter extends BaseAdapter {
         final InstantMessage message = getItem(position);
         final ViewHolder holder = (ViewHolder) convertView.getTag();
 
-        boolean isMe = message.getAuthor().equals(mDisplayName);
-        setChatRowAppearrance(isMe,holder);
+        //get error mjm
+        if (mDisplayName != null) {
+            boolean isMe = message.getAuthor().equals(mDisplayName);
+            setChatRowAppearrance(isMe, holder);
+        }
 
 
         String author = message.getAuthor();

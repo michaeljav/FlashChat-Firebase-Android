@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -70,7 +71,15 @@ public class MainChatActivity extends AppCompatActivity {
 //            if (mDisplayName == null) mDisplayName = "Anonymous";
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            /*mjm get user*/
+            UserInfo profile = user.getProviderData().get(0);
+            String uid = profile.getUid();
+            Log.d("FlashChat", "User id is: " + uid);
+            /*mjm get user*/
+
             mDisplayName= user.getDisplayName();
+            if (mDisplayName == null) mDisplayName = "Anonymous";
+
 
         }
 
